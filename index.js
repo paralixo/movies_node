@@ -7,7 +7,7 @@ const program = require('commander')
 program
     .version('1.0.0')
     .option('-w, --world', 'Show hello world')
-    .option('-i, --info [name]', 'Show info of movie')
+    .option('-i, --info', 'Show info of movie')
     .option('-a, --all', 'Show hello all')
     .option('-s, --someone [name]', 'Say hi to someone')
 // On parse (convertit en format utilisable) les options
@@ -15,6 +15,7 @@ program
 program.parse(process.argv)
 
 const api_key = '67a60f5c4a8f8a4e7d91c910ea93aced'
+const language = 'fr-FR'
 
 // Maintenant on peut les utiliser
 if (program.world) {
@@ -43,7 +44,40 @@ if (program.world) {
         console.log(answers)
     })
 } else if (program.info) {
-    let lien = ''
+    let link = 'https://api.themoviedb.org/3/search/movie?api_key=' + api_key + '&language=' + language
+    
+    inquirer.prompt([
+    {
+        type: 'input',
+        message: 'Entrez votre mot clé: ',
+        name: 'query'
+    }, {
+        type: 'input',
+        message: 'Entrez l\'année du film: ',
+        name: 'year'
+    }    
+    ]).then((answers) => {
+        
+        // Personnalise le lien
+        for(let parameter in answers) {
+            if (answers[parameter] != '') {
+                link += '&' + parameter + '=' +answers[parameter]
+            }
+        }
+        
+        // Requête vers l'API
+        axios.get(link)
+        .then(function (response) {
+            console.log(response.data.results)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+    })
+    
+    
+    
+    
     
 } else if (program.all) {
     console.log('Hello all!')
