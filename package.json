@@ -1,0 +1,25 @@
+{
+  "name": "movies_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paralixo/movies_node.git"
+  },
+  "bin": {
+      "mycommand": "./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paralixo/movies_node/issues"
+  },
+  "homepage": "https://github.com/paralixo/movies_node#readme",
+  "dependencies": {
+    "movies": "^1.0.0"
+  }
+}
