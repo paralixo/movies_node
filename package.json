@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/paralixo/movies_node#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.0",
     "movies": "^1.0.0"
   }
 }
