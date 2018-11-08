@@ -11,7 +11,7 @@
     "url": "git+https://github.com/paralixo/movies_node.git"
   },
   "bin": {
-      "mycommand": "./index.js"
+    "mycommand": "./index.js"
   },
   "author": "",
   "license": "ISC",
