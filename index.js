@@ -3,6 +3,7 @@
 const axios = require('axios')
 const inquirer = require('inquirer')
 const program = require('commander')
+const download = require('image-downloader')
 // Configuration des paramètres attendus
 program
     .version('1.0.0')
@@ -17,6 +18,34 @@ program.parse(process.argv)
 const api_key = '67a60f5c4a8f8a4e7d91c910ea93aced'
 const language = 'fr-FR'
 
+function download_img(img, movie_name) {
+    
+    inquirer.prompt([
+    {
+        type: 'confirm',
+        message: 'Voulez-vous sauvegarder le poster du film ?',
+        name: 'save'
+    }
+        
+    ]).then((answers) => { 
+        if (answers['save'] == true) {
+            options = {
+              url: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2' + img,
+              dest: './posters/' + movie_name  + '.jpg'      
+            }
+
+            download.image(options)
+              .then(({ filename, image }) => {
+                console.log('Img saved to', filename)
+              })
+              .catch((err) => {
+                console.error(err)
+              })
+        }
+    })
+    
+    
+}
 
 if (program.search) {
     let link = 'https://api.themoviedb.org/3/search/movie?api_key=' + api_key + '&language=' + language
@@ -59,11 +88,15 @@ if (program.search) {
                 answers = answers['film']
                 nom = answers.substr(0, answers.indexOf("|")-1)
                 annee = answers.substr(answers.indexOf("|")+2, 10)
+                img_name = ''
                 for (result of response.data.results) {
                     if (result['title'] == nom && result['release_date'] == annee) {
                         console.log(result)
+                        img_name = result['poster_path']
                     }
                 }
+                
+                download_img(img_name, nom)
             })
             
         })
@@ -96,8 +129,11 @@ if (program.search) {
                 for (result of response.data.results) {
                     if (result['title'] == nom && result['release_date'] == annee) {
                         console.log(result)
+                        img_name = result['poster_path']
                     }
                 }
+                
+                download_img(img_name, nom)
             })
         })
         .catch(function (error) {

@@ -22,6 +22,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "commander": "^2.19.0",
+    "image-downloader": "^3.4.1",
     "inquire": "^0.4.8",
     "inquirer": "^6.2.0",
     "movies": "^1.0.0"
