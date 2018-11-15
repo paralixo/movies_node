@@ -11,7 +11,8 @@
     "url": "git+https://github.com/paralixo/movies_node.git"
   },
   "bin": {
-    "mycommand": "./index.js"
+    "mycommand": "./index.js",
+    "acteur":"./acteur.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "commander": "^2.19.0",
+    "inquire": "^0.4.8",
     "inquirer": "^6.2.0",
     "movies": "^1.0.0"
   }
