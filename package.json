@@ -12,7 +12,7 @@
   },
   "bin": {
     "mycommand": "./index.js",
-    "acteur":"./acteur.js"
+    "acteur": "./acteur.js"
   },
   "author": "",
   "license": "ISC",
