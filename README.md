@@ -1,10 +1,14 @@
 ﻿
 # Search Movies
 
-Langage : NodeJS 
+Langage : NodeJS
+
 Date : 18/11/2018
+
 Développeurs : Clément MEHAYE & Florian LAFUENTE
+
 Notre projet utilise une **API** d'un site internet qui regroupe des information sur les films et les séries TV ainsi que les acteurs et les réalisateurs. 
+
 Lien vers le site: [https://www.themoviedb.org/](https://www.themoviedb.org/ "https://www.themoviedb.org/")
 
  ## Installation
